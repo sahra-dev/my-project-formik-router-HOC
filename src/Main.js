@@ -3,6 +3,7 @@ import FirstInfo from './pages/FirstInfo'
 import SecondInfo from './pages/SecondInfo'
 import ThirdInfo from './pages/ThirdInfo'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
+import LastPage from './pages/LastPage'
 
 const Main = () => {
   return (
@@ -12,6 +13,7 @@ const Main = () => {
         <Route path="/first-page" component={FirstInfo} />
         <Route path="/second-page" component={SecondInfo} />
         <Route path="/third-page" component={ThirdInfo} />
+        {/* <Route path="/result" component={LastPage} /> */}
       </Switch>
     </BrowserRouter>
   )

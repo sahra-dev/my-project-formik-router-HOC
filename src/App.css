@@ -292,3 +292,26 @@ label {
   background-color: var(--soft-purple);
   color: #fff;
 }
+
+/* Last Page */
+.last-section{
+  direction: rtl;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--soft-purple);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 4rem;
+  font-family: var(--font-family);
+}
+.a4{
+  width: 42rem;
+  height:  59.4rem;
+  background-color: #fff;
+  padding: 4rem;
+}
+.a4-row{
+  display: flex;
+  justify-content: space-evenly;
+}

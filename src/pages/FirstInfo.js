@@ -1,12 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useFormik } from 'formik'
-import { useState } from 'react'
 import * as Yup from 'yup'
 import SelectInput from '../common/InputSelect'
 import Input from '../common/input'
 import CheckboxInput from '../common/InputRadio'
 import Layout from '../components/Layout'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
+import axios from 'axios'
 
 const initialValues = {
   firstName: '',
@@ -71,20 +71,40 @@ const validationSchema = Yup.object({
 })
 
 const FirstInfo = () => {
-  const [formValue, setFormValue] = useState(null)
+  const [ formValue , setFormValue] = useState(null)
+  useEffect(()=>{
+    axios.get(`http://localhost:3001/usersData/${id}`)
+    .then(res => {
+      setFormValue(res.data)
+    })
+    .catch( err => console.log(err.name))
+  } , [])
+  const location = useLocation()
+  const { id } = location.state
   const history = useHistory()
-  const onSubmit = (e) => {
-    console.log(e)
-    history.push('/second-page')
+  const onSubmit = async (e) => {
+    try {
+      const { data } = await axios.get(`http://localhost:3001/usersData/${id}`)
+      await axios.put(`http://localhost:3001/usersData/${id}`, {
+        ...data,
+        ...e,
+      })
+      history.push('/second-page', { id })
+    } catch (error) {
+      console.log(error.name)
+    }
   }
+
   const formik = useFormik({
-    initialValues,
+    initialValues : formValue || initialValues ,
     onSubmit,
     validationSchema,
+    enableReinitialize :true
   })
   const clickHandler = () => {
     history.push('/')
   }
+ 
   return (
     <form onSubmit={formik.handleSubmit}>
       <Input

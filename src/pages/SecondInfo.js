@@ -1,11 +1,11 @@
-import React from 'react'
 import { useFormik } from 'formik'
-import { useState } from 'react'
 import * as Yup from 'yup'
 import SelectInput from '../common/InputSelect'
 import Input from '../common/input'
 import Layout from '../components/Layout'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
+import axios from 'axios'
+import { useState , useEffect } from 'react'
 
 const initialValues = {
   phoneNumber: '',
@@ -40,20 +40,40 @@ const validationSchema = Yup.object({
 })
 
 const SecondInfo = () => {
-  const [formValue, setFormValue] = useState(null)
+  const [ formValue , setFormValue] = useState(null)
+  useEffect(()=>{
+    axios.get(`http://localhost:3001/usersData/${id}`)
+    .then(res => {
+      setFormValue(res.data)
+    })
+    .catch( err => console.log(err.name))
+  }, [])
+  const location = useLocation()
+  const { id } = location.state
   const history = useHistory()
-  const onSubmit = (e) => {
-    console.log(e)
-    history.push('/third-page')
+  const onSubmit = async (e) => {
+    try {
+      const { data } = await axios.get(`http://localhost:3001/usersData/${id}`)
+      await axios.put(`http://localhost:3001/usersData/${id}`, {
+        ...data,
+        ...e,
+      })
+      history.push('/third-page', { id })
+    } catch (error) {
+      console.log(error.name)
+    }
   }
   const formik = useFormik({
-    initialValues,
+    initialValues :  formValue || initialValues,
     onSubmit,
     validationSchema,
+    enableReinitialize : true
   })
   const clickHandler = () => {
-    history.push('first-page')
+    history.push('first-page', { id })
   }
+  
+console.log(formValue);
   return (
     <form onSubmit={formik.handleSubmit}>
       <Input
