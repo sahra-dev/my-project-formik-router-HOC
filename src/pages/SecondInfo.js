@@ -5,12 +5,13 @@ import * as Yup from 'yup'
 import SelectInput from '../common/InputSelect'
 import Input from '../common/input'
 import Layout from '../components/Layout'
+import { useHistory } from 'react-router-dom'
 
 const initialValues = {
   phoneNumber: '',
   cellPhoneNumber: '',
   city: '',
-  address :''
+  address: '',
 }
 const cityOptions = [
   { label: 'تهران', value: 'tehran' },
@@ -40,62 +41,80 @@ const validationSchema = Yup.object({
 
 const SecondInfo = () => {
   const [formValue, setFormValue] = useState(null)
+  const history = useHistory()
   const onSubmit = (e) => {
     console.log(e)
+    history.push('/third-page')
   }
   const formik = useFormik({
     initialValues,
     onSubmit,
     validationSchema,
   })
-
+  const clickHandler = () => {
+    history.push('first-page')
+  }
   return (
-        <form onSubmit={formik.handleSubmit}>
-          <Input
-            formik={formik}
-            name="phoneNumber"
-            placeholder="021xxxxxxxx"
-            label="تلفن ثابت"
-            errorStyle={customErrorStyle}
-          />
-          <Input
-            formik={formik}
-            name="cellPhoneNumber"
-            placeholder="0912xxxxxxx"
-            label="تلفن همراه"
-            errorStyle={customErrorStyle}
-          />
-          <SelectInput
-            name="city"
-            id="city"
-            formik={formik}
-            label="شهر محل زندگی"
-            options={cityOptions}
-            errorStyle={customErrorStyle}
-            className="city-select"
-          />
-          <div className='address-cmp'>
-          <label>آدرس محل زندگی :</label>
-          {formik.touched.address && formik.errors.address &&(
-            <span className='error'>{formik.errors.address}</span>
-          )}
-          <textarea
-            name="address"
-            placeholder="آدرس دقیق خود را وارد کنید .."
-            {...formik.getFieldProps("address")}
-            style={
-                (formik.touched.address && formik.errors.address)?
-                customErrorStyle : null
-            }
-          ></textarea>
-          
-            </div>
-          <button className="next-btn" type="submit">
-            <div className="btn-flash-top"></div>
-            <div className="btn-flash-bottom"></div>
-          </button>
-        </form>
+    <form onSubmit={formik.handleSubmit}>
+      <Input
+        formik={formik}
+        name="phoneNumber"
+        placeholder="021xxxxxxxx"
+        label="تلفن ثابت"
+        errorStyle={customErrorStyle}
+      />
+      <Input
+        formik={formik}
+        name="cellPhoneNumber"
+        placeholder="0912xxxxxxx"
+        label="تلفن همراه"
+        errorStyle={customErrorStyle}
+      />
+      <SelectInput
+        name="city"
+        id="city"
+        formik={formik}
+        label="شهر محل زندگی"
+        options={cityOptions}
+        errorStyle={customErrorStyle}
+        className="city-select"
+      />
+      <div className="address-cmp">
+        <label>آدرس محل زندگی :</label>
+        {formik.touched.address && formik.errors.address && (
+          <span className="error">{formik.errors.address}</span>
+        )}
+        <textarea
+          name="address"
+          placeholder="آدرس دقیق خود را وارد کنید .."
+          {...formik.getFieldProps('address')}
+          style={
+            formik.touched.address && formik.errors.address
+              ? customErrorStyle
+              : null
+          }
+        ></textarea>
+      </div>
+      <div className="btns">
+        <button className="next-btn" type="submit">
+          <div className="btn-flash-top"></div>
+          <div className="btn-flash-bottom"></div>
+        </button>
+        <button
+          className="next-btn previous"
+          type="button"
+          onClick={clickHandler}
+        >
+          <div className="btn-flash-top"></div>
+          <div className="btn-flash-bottom"></div>
+        </button>
+      </div>
+    </form>
   )
 }
 
-export default Layout(SecondInfo , 'قسمت دوم')
+export default Layout(
+  SecondInfo,
+  'لطفا اطلاعات خود را در صفحه دوم وارد کنید',
+  'قسمت دوم',
+)

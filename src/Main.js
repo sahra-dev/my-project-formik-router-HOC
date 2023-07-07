@@ -1,13 +1,20 @@
-import FirstInfo from "./pages/FirstInfo";
-import Home from "./pages/Home";
-import SecondInfo from "./pages/SecondInfo";
-import ThirdInfo from "./pages/ThirdInfo";
+import Home from './pages/Home'
+import FirstInfo from './pages/FirstInfo'
+import SecondInfo from './pages/SecondInfo'
+import ThirdInfo from './pages/ThirdInfo'
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
 const Main = () => {
-    return ( 
-        <Home/>
-
-     );
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/first-page" component={FirstInfo} />
+        <Route path="/second-page" component={SecondInfo} />
+        <Route path="/third-page" component={ThirdInfo} />
+      </Switch>
+    </BrowserRouter>
+  )
 }
- 
-export default Main;
+
+export default Main

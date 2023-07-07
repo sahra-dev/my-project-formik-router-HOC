@@ -6,6 +6,7 @@ import SelectInput from '../common/InputSelect'
 import Input from '../common/input'
 import CheckboxInput from '../common/InputRadio'
 import Layout from '../components/Layout'
+import { useHistory } from 'react-router-dom'
 
 const initialValues = {
   firstName: '',
@@ -71,72 +72,90 @@ const validationSchema = Yup.object({
 
 const FirstInfo = () => {
   const [formValue, setFormValue] = useState(null)
+  const history = useHistory()
   const onSubmit = (e) => {
     console.log(e)
+    history.push('/second-page')
   }
   const formik = useFormik({
     initialValues,
     onSubmit,
     validationSchema,
   })
-
+  const clickHandler = () => {
+    history.push('/')
+  }
   return (
-        <form onSubmit={formik.handleSubmit}>
-          <Input
+    <form onSubmit={formik.handleSubmit}>
+      <Input
+        formik={formik}
+        name="firstName"
+        placeholder="نام خود را وارد کنید ..."
+        label="نام"
+        errorStyle={customErrorStyle}
+      />
+      <Input
+        formik={formik}
+        name="lastName"
+        placeholder="نام خانوادگی خود را وارد کنید ..."
+        label="نام خانوادگی"
+        errorStyle={customErrorStyle}
+      />
+      <div className="input-birthday">
+        <label> تاریخ تولد :</label>
+        <div className="input-birthday-counter">
+          <SelectInput
             formik={formik}
-            name="firstName"
-            placeholder="نام خود را وارد کنید ..."
-            label="نام"
             errorStyle={customErrorStyle}
+            options={dayCreator()}
+            name="birthDay"
+            id="birthDay"
+            label="روز"
           />
-          <Input
+          <SelectInput
             formik={formik}
-            name="lastName"
-            placeholder="نام خانوادگی خود را وارد کنید ..."
-            label="نام خانوادگی"
             errorStyle={customErrorStyle}
+            options={monthOption}
+            name="birthMonth"
+            id="birthMonth"
+            label="ماه"
           />
-          <div className="input-birthday">
-            <label> تاریخ تولد :</label>
-            <div className="input-birthday-counter">
-              <SelectInput
-                formik={formik}
-                errorStyle={customErrorStyle}
-                options={dayCreator()}
-                name="birthDay"
-                id="birthDay"
-                label="روز"
-              />
-              <SelectInput
-                formik={formik}
-                errorStyle={customErrorStyle}
-                options={monthOption}
-                name="birthMonth"
-                id="birthMonth"
-                label="ماه"
-              />
-              <SelectInput
-                formik={formik}
-                errorStyle={customErrorStyle}
-                options={yearCreator()}
-                name="birthYear"
-                id="birthYear"
-                label="سال"
-              />
-            </div>
-          </div>
-          <CheckboxInput
+          <SelectInput
             formik={formik}
-            name="gender"
-            options={genderOption}
-            label="جنسیت"
+            errorStyle={customErrorStyle}
+            options={yearCreator()}
+            name="birthYear"
+            id="birthYear"
+            label="سال"
           />
-          <button className="next-btn" type="submit">
-            <div className="btn-flash-top"></div>
-            <div className="btn-flash-bottom"></div>
-          </button>
-        </form>
+        </div>
+      </div>
+      <CheckboxInput
+        formik={formik}
+        name="gender"
+        options={genderOption}
+        label="جنسیت"
+      />
+      <div className="btns">
+        <button className="next-btn" type="submit">
+          <div className="btn-flash-top"></div>
+          <div className="btn-flash-bottom"></div>
+        </button>
+        <button
+          className="next-btn previous"
+          type="button"
+          onClick={clickHandler}
+        >
+          <div className="btn-flash-top"></div>
+          <div className="btn-flash-bottom"></div>
+        </button>
+      </div>
+    </form>
   )
 }
 
-export default Layout(FirstInfo , 'قسمت اول')
+export default Layout(
+  FirstInfo,
+  'لطفا اطلاعات خود را در صفحه اول وارد کنید',
+  'قسمت اول',
+)

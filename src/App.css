@@ -29,8 +29,12 @@ html {
   padding-top: 6rem;
   font-family: 'Baloo';
   font-size: 1.2rem;
-  background: rgb(184,161,217);
-  background: linear-gradient(90deg, rgba(184,161,217,1) 0%, rgba(255,143,143,0.5242296747800683) 100%); 
+  background: rgb(184, 161, 217);
+  background: linear-gradient(
+    90deg,
+    rgba(184, 161, 217, 1) 0%,
+    rgba(255, 143, 143, 0.5242296747800683) 100%
+  );
 }
 header {
   font-size: 1.5rem;
@@ -64,7 +68,7 @@ header {
   height: 100%;
   padding: 2rem 4rem;
 }
-.input-text-container ,
+.input-text-container,
 .number-input {
   display: flex;
   align-items: center;
@@ -165,10 +169,15 @@ label {
   font-size: 1.5rem;
   margin-right: 0.5rem;
 }
-.input-radio .error{
-    transform: translate(0.7rem);
+.input-radio .error {
+  transform: translate(0.7rem);
 }
 /* botton next */
+.btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
 .next-btn {
   all: unset;
   width: 3.5rem;
@@ -201,7 +210,9 @@ label {
 .next-btn:hover .btn-flash-top {
   border: 1px solid var(--soft-pink);
 }
-
+.next-btn.previous {
+  transform: rotate(180deg);
+}
 /* second page */
 .city-select label {
   font-size: 1.5rem;
@@ -213,10 +224,10 @@ label {
 .city-select .error {
   transform: translate(22rem, 2rem);
 }
-.address-cmp{
-    margin-top: 2rem;
+.address-cmp {
+  margin-top: 2rem;
 }
-.address-cmp textarea{
+.address-cmp textarea {
   all: unset;
   margin: 1rem;
   width: 90%;
@@ -231,24 +242,53 @@ label {
 .address-cmp textarea:focus {
   border: 2px solid var(--soft-purple);
 }
-.address-cmp .error{
-    transform: translate( 11rem , 2rem);
+.address-cmp .error {
+  transform: translate(11rem, 2rem);
 }
 /* third page */
-.number-input input{
-    width: 15rem;
+.number-input input {
+  width: 15rem;
 }
-.number-input .error{
-    transform: translate(0.5rem);
-}
-.checkbox-input{
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-}
-.checkbox-input div{
-    margin-right: 2rem;
-}
-.checkbox-input .error{
+.number-input .error {
   transform: translate(0.5rem);
+}
+.checkbox-input {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.checkbox-input div {
+  margin-right: 2rem;
+}
+.checkbox-input .error {
+  transform: translate(0.5rem);
+}
+/* home section */
+.home-section {
+  width: 100%;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  padding: 3rem;
+}
+.home-section p {
+  text-align: center;
+}
+.home-section button {
+  all: unset;
+  border: 1px solid var(--soft-purple);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--taupe);
+  border-radius: 2rem;
+  margin-top: 3rem;
+  cursor: pointer;
+}
+.home-section button:hover {
+  background-color: var(--soft-purple);
+  color: #fff;
 }
