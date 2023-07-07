@@ -4,6 +4,7 @@ import { useState } from 'react'
 import * as Yup from 'yup'
 import SelectInput from '../common/InputSelect'
 import Input from '../common/input'
+import Layout from '../components/Layout'
 
 const initialValues = {
   phoneNumber: '',
@@ -49,9 +50,6 @@ const SecondInfo = () => {
   })
 
   return (
-    <div className="counter">
-      <h3 className="counter-header">قسمت دوم</h3>
-      <div className="counter-main">
         <form onSubmit={formik.handleSubmit}>
           <Input
             formik={formik}
@@ -97,9 +95,7 @@ const SecondInfo = () => {
             <div className="btn-flash-bottom"></div>
           </button>
         </form>
-      </div>
-    </div>
   )
 }
 
-export default SecondInfo
+export default Layout(SecondInfo , 'قسمت دوم')

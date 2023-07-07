@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import Input from '../common/input'
 import InputRadio from '../common/InputRadio'
 import CheckboxInput from '../common/InputCheckBox'
+import Layout from '../components/Layout'
 
 const initialValues = {
   numberOfFamilyMember: '',
@@ -48,9 +49,6 @@ const ThirdInfo = () => {
   })
 
   return (
-    <div className="counter">
-      <h3 className="counter-header">قسمت سوم</h3>
-      <div className="counter-main">
         <form onSubmit={formik.handleSubmit}>
           <Input
             type="number"
@@ -85,9 +83,8 @@ const ThirdInfo = () => {
             <div className="btn-flash-bottom"></div>
           </button>
         </form>
-      </div>
-    </div>
+
   )
 }
 
-export default ThirdInfo
+export default Layout(ThirdInfo , 'قسمت سوم')

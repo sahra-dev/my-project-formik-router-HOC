@@ -81,9 +81,6 @@ const FirstInfo = () => {
   })
 
   return (
-    <div className="counter">
-      <h3 className="counter-header">قسمت اول</h3>
-      <div className="counter-main">
         <form onSubmit={formik.handleSubmit}>
           <Input
             formik={formik}
@@ -139,9 +136,7 @@ const FirstInfo = () => {
             <div className="btn-flash-bottom"></div>
           </button>
         </form>
-      </div>
-    </div>
   )
 }
 
-export default Layout(FirstInfo)
+export default Layout(FirstInfo , 'قسمت اول')
