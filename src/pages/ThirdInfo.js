@@ -67,12 +67,12 @@ const ThirdInfo = () => {
     initialValues :  formValue || initialValues,
     onSubmit,
     validationSchema,
-    enableReinitialize : true
+    enableReinitialize : true,
+    validateOnMount:true
   })
   const clickHandler = () => {
     history.push('/second-page', { id })
   }
-  console.log(formValue);
   return (
     <form onSubmit={formik.handleSubmit}>
       <Input
@@ -104,7 +104,7 @@ const ThirdInfo = () => {
         label="آیا متاهل هستید؟"
       />
       <div className="btns">
-        <button className="next-btn" type="submit">
+        <button className="next-btn" type="submit"  >
           <div className="btn-flash-top"></div>
           <div className="btn-flash-bottom"></div>
         </button>

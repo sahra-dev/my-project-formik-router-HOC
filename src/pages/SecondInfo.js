@@ -5,7 +5,7 @@ import Input from '../common/input'
 import Layout from '../components/Layout'
 import { useHistory, useLocation } from 'react-router-dom'
 import axios from 'axios'
-import { useState , useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 const initialValues = {
   phoneNumber: '',
@@ -24,6 +24,7 @@ const cityOptions = [
   { label: 'مازندران', value: 'mazandaran' },
   { label: 'عسلویه', value: 'asalooye' },
   { label: 'قزوین', value: 'ghazvin' },
+  { label: 'خوزستان', value: 'khozestan' },
 ]
 const customErrorStyle = {
   border: '1.5px solid #f06e6e',
@@ -40,13 +41,14 @@ const validationSchema = Yup.object({
 })
 
 const SecondInfo = () => {
-  const [ formValue , setFormValue] = useState(null)
-  useEffect(()=>{
-    axios.get(`http://localhost:3001/usersData/${id}`)
-    .then(res => {
-      setFormValue(res.data)
-    })
-    .catch( err => console.log(err.name))
+  const [formValue, setFormValue] = useState(null)
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/usersData/${id}`)
+      .then((res) => {
+        setFormValue(res.data)
+      })
+      .catch((err) => console.log(err.name))
   }, [])
   const location = useLocation()
   const { id } = location.state
@@ -64,16 +66,15 @@ const SecondInfo = () => {
     }
   }
   const formik = useFormik({
-    initialValues :  formValue || initialValues,
+    initialValues:  formValue || initialValues,
     onSubmit,
     validationSchema,
-    enableReinitialize : true
+    enableReinitialize: true,
+    validateOnMount:true
   })
   const clickHandler = () => {
     history.push('first-page', { id })
   }
-  
-console.log(formValue);
   return (
     <form onSubmit={formik.handleSubmit}>
       <Input
@@ -116,7 +117,7 @@ console.log(formValue);
         ></textarea>
       </div>
       <div className="btns">
-        <button className="next-btn" type="submit">
+        <button className="next-btn" type="submit" disabled={!formik.isValid}>
           <div className="btn-flash-top"></div>
           <div className="btn-flash-bottom"></div>
         </button>

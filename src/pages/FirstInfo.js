@@ -99,7 +99,8 @@ const FirstInfo = () => {
     initialValues : formValue || initialValues ,
     onSubmit,
     validationSchema,
-    enableReinitialize :true
+    enableReinitialize :true,
+    validateOnMount:true
   })
   const clickHandler = () => {
     history.push('/')
@@ -157,7 +158,7 @@ const FirstInfo = () => {
         label="جنسیت"
       />
       <div className="btns">
-        <button className="next-btn" type="submit">
+        <button className="next-btn" type="submit" disabled={!formik.isValid}>
           <div className="btn-flash-top"></div>
           <div className="btn-flash-bottom"></div>
         </button>

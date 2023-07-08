@@ -13,7 +13,7 @@ const Main = () => {
         <Route path="/first-page" component={FirstInfo} />
         <Route path="/second-page" component={SecondInfo} />
         <Route path="/third-page" component={ThirdInfo} />
-        {/* <Route path="/result" component={LastPage} /> */}
+        <Route path="/result" component={LastPage} />
       </Switch>
     </BrowserRouter>
   )

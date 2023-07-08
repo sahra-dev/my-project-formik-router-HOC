@@ -189,10 +189,16 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* transform: translate(-10rem , 5rem); */
 }
 .next-btn:hover {
   background-color: var(--taupe);
+}
+.next-btn:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.next-btn:disabled:hover{
+  background-color: var(--soft-pink);
 }
 .btn-flash-top,
 .btn-flash-bottom {
@@ -304,14 +310,41 @@ label {
   align-items: flex-start;
   padding-top: 4rem;
   font-family: var(--font-family);
+  font-size: 1.4rem;
 }
 .a4{
   width: 42rem;
   height:  59.4rem;
   background-color: #fff;
-  padding: 4rem;
+  padding: 6rem;
 }
-.a4-row{
+.a4 p span{
+  margin-right: 1rem;
+}
+.a4-btns{
+  margin-top: 4rem;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.a4-btn{
+  all: unset;
+  cursor: pointer;
+  margin: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--taupe);
+  border-radius: 2rem;
+}
+.a4-btn:hover{
+  background-color: var(--taupe);
+  color: #fff;
+}
+.toast-style{
+  font-family: var(--font-family);
+  font-size: 1.5rem;
+  font-weight: bolder;
 }
