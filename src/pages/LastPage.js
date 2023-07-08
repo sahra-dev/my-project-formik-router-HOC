@@ -165,7 +165,7 @@ const LastPage = () => {
           </div>
         </div>
       ) : (
-        <div> Loading ...</div>
+        <div>Loading ...</div>
       )}
     </div>
   )
