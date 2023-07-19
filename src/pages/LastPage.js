@@ -117,8 +117,10 @@ const LastPage = () => {
   
   return (
     <div className="last-section">
+      
       {formValue ? (
         <div className="a4">
+          <header >  اطلاعات وارد شده :</header>
           <p>
             - نام :
             <span>

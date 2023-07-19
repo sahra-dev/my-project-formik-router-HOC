@@ -53,6 +53,7 @@ header {
   align-items: center;
   direction: rtl;
 }
+
 .counter-header {
   height: 8rem;
   font-size: 2.5rem;
@@ -90,7 +91,7 @@ header {
   font-size: 1.5rem;
 }
 .input-text-container .error {
-  transform: translate(1rem, 2rem);
+  transform: translate(1rem, 1rem);
 }
 .input-text-container input,
 .number-input input {
@@ -131,6 +132,7 @@ header {
   justify-content: center;
   align-items: flex-start;
 }
+
 select {
   width: 10rem;
   height: 3.5rem;
@@ -310,13 +312,13 @@ label {
   align-items: flex-start;
   padding-top: 4rem;
   font-family: var(--font-family);
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 .a4{
   width: 42rem;
   height:  59.4rem;
   background-color: #fff;
-  padding: 6rem;
+  padding: 3rem;
 }
 .a4 p span{
   margin-right: 1rem;
@@ -347,4 +349,41 @@ label {
   font-family: var(--font-family);
   font-size: 1.5rem;
   font-weight: bolder;
+}
+@media screen and (max-width : 500px) {
+  .counter-header{
+    font-size: 2rem;
+  }
+  .counter {
+    width: 32rem;
+  }
+  .input-birthday-counter {
+    width: 15rem;
+  }
+  select{
+    width: 7rem;
+  }
+  .input-text-container label,
+.input-birthday label,
+.input-radio label,
+.number-input label , label {
+  font-size: 1.3rem;
+}
+.error{
+  font-size: 1.2rem;
+}
+.input-text-container input{
+  width: 12rem;
+  font-size: 1rem ;
+}
+.number-input input{
+  width: 8rem;
+}
+  .a4{
+    width: 33.6rem;
+    height: 47.52rem;
+  }
+  .last-section{
+    font-size: 1.2rem;
+  }
 }

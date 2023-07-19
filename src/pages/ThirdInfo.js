@@ -77,7 +77,7 @@ const ThirdInfo = () => {
         formik={formik}
         name="numberOfFamilyMember"
         label="تعداد اعضای خانواده"
-        placeholder="تعداد را وارد کنید"
+        placeholder="تعداد "
         min="1"
         errorStyle={customErrorStyle}
         className="number-input"
