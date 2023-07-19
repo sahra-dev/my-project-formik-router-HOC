@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom'
 import Layout from '../components/Layout'
 import axios from 'axios'
+import http from '../services/httpServices'
 
 const Home = () => {
   const history = useHistory()
@@ -10,8 +11,8 @@ const Home = () => {
   }
   const clickHandler = async () => {
     try {
-      await axios.post('http://localhost:3001/usersData', { ...object })
       history.push('/first-page', { ...object })
+      await http.post('/usersData', { ...object })
     } catch (error) {
       console.log('error')
     }

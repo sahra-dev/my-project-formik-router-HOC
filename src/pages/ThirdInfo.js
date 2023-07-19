@@ -6,8 +6,8 @@ import InputRadio from '../common/InputRadio'
 import CheckboxInput from '../common/InputCheckBox'
 import Layout from '../components/Layout'
 import { useHistory , useLocation } from 'react-router-dom'
-import axios from 'axios'
 import { useState , useEffect } from 'react'
+import http from '../services/httpServices'
 
 const initialValues = {
   numberOfFamilyMember: '',
@@ -42,7 +42,7 @@ const validationSchema = Yup.object({
 const ThirdInfo = () => {
   const [ formValue , setFormValue] = useState(null)
   useEffect(()=>{
-    axios.get(`http://localhost:3001/usersData/${id}`)
+    http.get(`/usersData/${id}`)
     .then(res => {
       setFormValue(res.data)
     })
@@ -53,12 +53,9 @@ const ThirdInfo = () => {
   const history = useHistory()
   const onSubmit = async (e) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/usersData/${id}`)
-      await axios.put(`http://localhost:3001/usersData/${id}`, {
-        ...data,
-        ...e,
-      })
       history.push('/result' , { id })
+      const { data } = await http.get(`/usersData/${id}`)
+      await http.put(`/usersData/${id}`, { ...data,  ...e, })
     } catch (error) {
       console.log(error.name)
     }

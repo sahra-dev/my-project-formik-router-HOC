@@ -6,19 +6,13 @@ import Input from '../common/input'
 import CheckboxInput from '../common/InputRadio'
 import Layout from '../components/Layout'
 import { useHistory, useLocation } from 'react-router-dom'
-import axios from 'axios'
-
+import http from '../services/httpServices'
 const initialValues = {
   firstName: '',
   lastName: '',
   birthDay: '',
   birthMonth: '',
   birthYear: '',
-  // birthDate: {
-  //   day: '',
-  //   month: '',
-  //   year: '',
-  // },
   gender: '',
 }
 // ? create day month year
@@ -73,7 +67,7 @@ const validationSchema = Yup.object({
 const FirstInfo = () => {
   const [ formValue , setFormValue] = useState(null)
   useEffect(()=>{
-    axios.get(`http://localhost:3001/usersData/${id}`)
+    http.get(`/usersData/${id}`)
     .then(res => {
       setFormValue(res.data)
     })
@@ -84,12 +78,9 @@ const FirstInfo = () => {
   const history = useHistory()
   const onSubmit = async (e) => {
     try {
-      const { data } = await axios.get(`http://localhost:3001/usersData/${id}`)
-      await axios.put(`http://localhost:3001/usersData/${id}`, {
-        ...data,
-        ...e,
-      })
       history.push('/second-page', { id })
+      const { data } = await http.get(`/usersData/${id}`)
+      await http.put(`/usersData/${id}` , { ...data , ...e})
     } catch (error) {
       console.log(error.name)
     }

@@ -1,8 +1,9 @@
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useLocation , useHistory} from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import http from '../services/httpServices';
+import Loading from '../components/Loading/Loading';
 
 const LastPage = () => {
   const [formValue, setFormValue] = useState(null)
@@ -12,9 +13,7 @@ const LastPage = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:3001/usersData/${id}`,
-        )
+        const { data } = await http.get(`/usersData/${id}`)
         console.log(data)
         setFormValue(data)
       } catch (error) {
@@ -165,7 +164,9 @@ const LastPage = () => {
           </div>
         </div>
       ) : (
-        <div>Loading ...</div>
+        <div>
+          <Loading />
+        </div>
       )}
     </div>
   )
