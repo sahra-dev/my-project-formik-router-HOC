@@ -42,7 +42,7 @@ header {
   color: var(--taupe);
 }
 .counter {
-  width: 50rem;
+  width: 55rem;
   height: 45rem;
   border: 2px solid var(--taupe);
   background-color: var(--soft-pink);
@@ -88,10 +88,11 @@ header {
 .error {
   position: absolute;
   color: var(--error-color);
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .input-text-container .error {
-  transform: translate(1rem, 1rem);
+  transform: translate(1.2rem,1.8rem);
+  font-size: 1.1rem;
 }
 .input-text-container input,
 .number-input input {
@@ -150,7 +151,7 @@ select > option {
   background-color: var(--soft-purple);
 }
 .input-birthday-counter div .error {
-  transform: translate(1rem, -1rem);
+  transform: translate(0.5rem, 0rem);
 }
 .input-radio {
   margin-top: 1rem;
@@ -176,9 +177,13 @@ label {
 }
 /* botton next */
 .btns {
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  position: absolute;
+  top: 49rem;
+  left: 1rem;
 }
 .next-btn {
   all: unset;
@@ -251,7 +256,7 @@ label {
   border: 2px solid var(--soft-purple);
 }
 .address-cmp .error {
-  transform: translate(11rem, 2rem);
+  transform: translate(10rem, 2.5rem);
 }
 /* third page */
 .number-input input {
@@ -350,7 +355,7 @@ label {
   font-size: 1.5rem;
   font-weight: bolder;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .counter-header {
     font-size: 2rem;
   }
@@ -386,5 +391,11 @@ label {
   }
   .last-section {
     font-size: 1.2rem;
+  }
+  .a4-btns{
+    margin-top: 2rem;
+  }
+  .address-cmp .error {
+    transform: translate(8.5rem, 3rem);
   }
 }
