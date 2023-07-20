@@ -195,11 +195,11 @@ label {
 .next-btn:hover {
   background-color: var(--taupe);
 }
-.next-btn:disabled{
+.next-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-.next-btn:disabled:hover{
+.next-btn:disabled:hover {
   background-color: var(--soft-pink);
 }
 .btn-flash-top,
@@ -302,7 +302,7 @@ label {
 }
 
 /* Last Page */
-.last-section{
+.last-section {
   direction: rtl;
   width: 100vw;
   min-height: 100vh;
@@ -314,23 +314,23 @@ label {
   font-family: var(--font-family);
   font-size: 1.6rem;
 }
-.a4{
+.a4 {
   width: 42rem;
-  height:  59.4rem;
+  height: 59.4rem;
   background-color: #fff;
   padding: 3rem;
 }
-.a4 p span{
+.a4 p span {
   margin-right: 1rem;
 }
-.a4-btns{
+.a4-btns {
   margin-top: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.a4-btn{
+.a4-btn {
   all: unset;
   cursor: pointer;
   margin: 1rem;
@@ -341,17 +341,17 @@ label {
   border: 1px solid var(--taupe);
   border-radius: 2rem;
 }
-.a4-btn:hover{
+.a4-btn:hover {
   background-color: var(--taupe);
   color: #fff;
 }
-.toast-style{
+.toast-style {
   font-family: var(--font-family);
   font-size: 1.5rem;
   font-weight: bolder;
 }
-@media screen and (max-width : 500px) {
-  .counter-header{
+@media screen and (max-width: 500px) {
+  .counter-header {
     font-size: 2rem;
   }
   .counter {
@@ -360,30 +360,31 @@ label {
   .input-birthday-counter {
     width: 15rem;
   }
-  select{
+  select {
     width: 7rem;
   }
   .input-text-container label,
-.input-birthday label,
-.input-radio label,
-.number-input label , label {
-  font-size: 1.3rem;
-}
-.error{
-  font-size: 1.2rem;
-}
-.input-text-container input{
-  width: 12rem;
-  font-size: 1rem ;
-}
-.number-input input{
-  width: 8rem;
-}
-  .a4{
+  .input-birthday label,
+  .input-radio label,
+  .number-input label,
+  label {
+    font-size: 1.3rem;
+  }
+  .error {
+    font-size: 1.2rem;
+  }
+  .input-text-container input {
+    width: 12rem;
+    font-size: 1rem;
+  }
+  .number-input input {
+    width: 8rem;
+  }
+  .a4 {
     width: 33.6rem;
     height: 47.52rem;
   }
-  .last-section{
+  .last-section {
     font-size: 1.2rem;
   }
 }
